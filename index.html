@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Hostable Webpage</title>
+  <meta name="description" content="A clean HTML/CSS/JS template ready for hosting (GitHub Pages, Netlify)." />
+  <link rel="icon" href="data:,"> <!-- replace with real favicon if you have -->
+  <style>
+    /* ---------- Basic reset ---------- */
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #94a3b8;
+      --accent: #06b6d4;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background: linear-gradient(180deg, #071025 0%, #071827 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px;
+    }
+
+    /* ---------- Container ---------- */
+    .container{max-width:1100px;margin:0 auto;}
+
+    /* ---------- Header ---------- */
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;margin-bottom:28px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);
+      display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#022;
+      box-shadow:0 6px 18px rgba(6,182,212,0.08), inset 0 -6px 12px rgba(255,255,255,0.03);
+    }
+    nav ul{display:flex;gap:16px;list-style:none}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#022;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    /* mobile nav */
+    .nav-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:8px;color:var(--muted)}
+    /* ---------- Hero ---------- */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:30px;
+    }
+    .hero-card{
+      background:var(--glass);padding:28px;border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    h1{font-size:2rem;margin-bottom:8px}
+    p.lead{color:var(--muted);margin-bottom:18px}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#022}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* ---------- Features ---------- */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .feature{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .feature h3{margin-bottom:8px;font-size:1rem}
+    .feature p{color:var(--muted);font-size:0.92rem}
+
+    /* ---------- Contact ---------- */
+    form{display:flex;flex-direction:column;gap:10px}
+    input[type="text"], input[type="email"], textarea{
+      background:#041224;border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:10px;color:#e6eef6;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .note{font-size:0.85rem;color:var(--muted)}
+    .success{background:linear-gradient(90deg,#10b981,#06b6d4);padding:12px;border-radius:10px;color:#022;font-weight:700}
+
+    /* ---------- Footer ---------- */
+    footer{margin-top:32px;color:var(--muted);font-size:0.9rem;text-align:center;padding:14px 0}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; }
+      .features{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+      .nav-toggle{display:inline-flex}
+    }
+    @media (max-width:600px){
+      .features{grid-template-columns:1fr}
+      .logo{width:40px;height:40px}
+      h1{font-size:1.6rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">N</div>
+        <div>
+          <div style="font-weight:800">Nova Page</div>
+          <div style="color:var(--muted);font-size:0.85rem">Fast, simple & host-ready</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-toggle" id="navToggle">☰</button>
+        <ul id="navList">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="cta" href="#contact">Get started</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Simple hostable webpage</h1>
+          <p class="lead">આ એક લાઇટવેઇટ single-file template છે — GitHub Pages, Netlify, અથવા Vercel પર તરત host કરી શકો. સરળ કસ્ટમાઇઝ માટે સસ્પષ્ટ CSS અને vanilla JS નો ઉપયોગ કર્યો છે.</p>
+
+          <div class="hero-btns">
+            <button class="btn btn-primary" id="downloadBtn">Download</button>
+            <button class="btn btn-outline" id="previewBtn">Live Preview</button>
+          </div>
+
+          <div style="margin-top:14px;color:var(--muted);font-size:0.9rem">
+            Tip: Save this file as <code>index.html</code> and push to a repo for GitHub Pages.
+          </div>
+
+          <div style="margin-top:18px">
+            <div style="font-weight:700;margin-bottom:8px">Quick stats</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <div style="background:#021123;padding:10px;border-radius:10px;min-width:100px;text-align:center">
+                <div style="font-size:1.25rem;font-weight:800">✅</div>
+                <div style="color:var(--muted)">Responsive</div>
+              </div>
+              <div style="background:#021123;padding:10px;border-radius:10px;min-width:100px;text-align:center">
+                <div style="font-size:1.25rem;font-weight:800">⚡</div>
+                <div style="color:var(--muted)">Fast</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-labelledby="features">
+          <h2 id="features" style="margin-bottom:8px">Features</h2>
+          <div class="features">
+            <div class="feature">
+              <h3>Clean UI</h3>
+              <p>Minimal, readable layout — સરળ કસ્ટમાઇઝ માટે.</p>
+            </div>
+            <div class="feature">
+              <h3>Client validation</h3>
+              <p>Contact form validates on client side and shows friendly message.</p>
+            </div>
+            <div class="feature">
+              <h3>Host-ready</h3>
+              <p>Single file — GitHub Pages / Netlify માટે instant deploy.</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="contact" class="hero-card" style="margin-bottom:22px">
+        <h2>Contact us</h2>
+        <p class="note">ફોર્મ ભરો — આ સાઇટ ડેમો માટે છે; આવા ફોર્મને પ્રોડક્શનમાં ઇમેલ સર્વિસ અથવા API સાથે જોડો.</p>
+
+        <form id="contactForm" novalidate>
+          <input type="text" id="name" name="name" placeholder="તમારું નામ" required />
+          <input type="email" id="email" name="email" placeholder="તમારું ઇમેલ" required />
+          <textarea id="message" name="message" placeholder="સંદેશ..." required></textarea>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="button" class="btn btn-outline" id="clearBtn">Clear</button>
+          </div>
+          <div id="formResult" aria-live="polite" style="margin-top:10px"></div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Nova Page · Built with HTML, CSS & JS · Host-ready
+    </footer>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+    navToggle.addEventListener('click', ()=> {
+      if(navList.style.display === 'flex') navList.style.display = '';
+      else navList.style.display = 'flex';
+    });
+
+    // Download button - prompt save
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const html = document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Live preview just scrolls to page top (placeholder)
+    document.getElementById('previewBtn').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Form handling (client-side only)
+    const form = document.getElementById('contactForm');
+    const result = document.getElementById('formResult');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      result.textContent = ''; result.className = '';
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // simple validation
+      if(!name || !email || !message){
+        result.textContent = 'Please fill all fields.';
+        result.style.color = '#fca5a5';
+        return;
+      }
+      const emailRe = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      if(!emailRe.test(email)){
+        result.textContent = 'Enter a valid email.';
+        result.style.color = '#fca5a5';
+        return;
+      }
+
+      // demo "send": here we store to localStorage and show success
+      const submissions = JSON.parse(localStorage.getItem('submissions')||'[]');
+      submissions.push({name,email,message,at:new Date().toISOString()});
+      localStorage.setItem('submissions', JSON.stringify(submissions));
+
+      result.textContent = 'Thanks! Message saved locally (demo).';
+      result.className = 'success';
+      form.reset();
+    });
+
+    // Clear button
+    document.getElementById('clearBtn').addEventListener('click', ()=> {
+      form.reset();
+      result.textContent = '';
+      result.className = '';
+    });
+  </script>
+</body>
+</html>
